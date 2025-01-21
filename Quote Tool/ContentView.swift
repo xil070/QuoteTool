@@ -19,6 +19,8 @@ struct Machine: Identifiable, Hashable {
     let Btu17rated: Int
     let Btu17max: Int
     let Btu5max: Int
+    
+    let backgroundColor: Color
 }
 
 struct SelectedMachine: Identifiable {
@@ -27,42 +29,47 @@ struct SelectedMachine: Identifiable {
     var quantity: Int
 }
 
+let backgroundColor0 = Color(.systemBackground)
+let backgroundColor1 = Color(.secondarySystemBackground)
+
 class MachineViewModel: ObservableObject {
     @Published var machines25Seer: [Machine] = [
-        Machine(name: "KW09HQ25SA SET", price: 667.0, isIDU: true, isODU: true, Btu95min: 1700, Btu95rated: 9100, Btu95max: 13000, Btu17rated: 7000, Btu17max: 11000, Btu5max: 9900),
-        Machine(name: "KW09HQ25SD SET", price: 679.0, isIDU: true, isODU: true, Btu95min: 1600, Btu95rated: 9100, Btu95max: 10800, Btu17rated: 7000, Btu17max: 11000, Btu5max: 9100),
-        Machine(name: "KW12HQ25SA SET", price: 686.0, isIDU: true, isODU: true, Btu95min: 3050, Btu95rated: 12000, Btu95max: 14000, Btu17rated: 7000, Btu17max: 10900, Btu5max: 8800),
-        Machine(name: "KW12HQ25SD SET", price: 700.0, isIDU: true, isODU: true, Btu95min: 3050, Btu95rated: 12000, Btu95max: 14000, Btu17rated: 7000, Btu17max: 10900, Btu5max: 8800),
-        Machine(name: "KW18HQ25SD SET", price: 839.0, isIDU: true, isODU: true, Btu95min: 4900, Btu95rated: 18000, Btu95max: 21154, Btu17rated: 10800, Btu17max: 15500, Btu5max: 13100),
-        Machine(name: "KW24HQ25SD SET", price: 1051.0, isIDU: true, isODU: true, Btu95min: 3400, Btu95rated: 22000, Btu95max: 28500, Btu17rated: 15000, Btu17max: 22000, Btu5max: 16100),
-        Machine(name: "KW36HQ20SD SET", price: 1475.0, isIDU: true, isODU: true, Btu95min: 8000, Btu95rated: 33600, Btu95max: 37000, Btu17rated: 22000, Btu17max: 28000, Btu5max: 24000),
-        Machine(name: "KM18H5O", price: 727.0, isIDU: false, isODU: true, Btu95min: 7000, Btu95rated: 17000, Btu95max: 19600, Btu17rated: 14700, Btu17max: 16400 , Btu5max: 13600),
-        Machine(name: "KM24H5O", price: 1069.0, isIDU: false, isODU: true, Btu95min: 7500, Btu95rated: 23200, Btu95max: 31400, Btu17rated: 23600, Btu17max: 26600, Btu5max: 21600),
-        Machine(name: "KM30H5O", price: 1248.0, isIDU: false, isODU: true, Btu95min: 8200, Btu95rated: 28400, Btu95max: 34100, Btu17rated: 27200, Btu17max: 31860, Btu5max: 22800),
-        Machine(name: "KM36H5O", price: 1551.0, isIDU: false, isODU: true, Btu95min: 8870, Btu95rated: 34000, Btu95max: 36000, Btu17rated: 30800, Btu17max: 37720, Btu5max: 32400),
-        Machine(name: "KW09HQ25SDI", price: 202.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW12HQ25SDI", price: 203.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW18HQ25SDI", price: 246.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW24HQ25SDI", price: 331.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KU36UHO/2I", price: 3094.0, isIDU: true, isODU: true, Btu95min: 11000, Btu95rated: 34000, Btu95max: 34000, Btu17rated: 24000, Btu17max: 35000, Btu5max: 28000),
-        Machine(name: "KU60UHO/2I", price: 4074.0, isIDU: true, isODU: true, Btu95min: 15300, Btu95rated: 54000, Btu95max: 54000, Btu17rated: 36000, Btu17max: 49000, Btu5max: 41000)
+        Machine(name: "KW09HQ25SA SET", price: 667.0, isIDU: true, isODU: true, Btu95min: 1700, Btu95rated: 9100, Btu95max: 13000, Btu17rated: 7000, Btu17max: 11000, Btu5max: 9900, backgroundColor: backgroundColor0),
+        Machine(name: "KW09HQ25SD SET", price: 679.0, isIDU: true, isODU: true, Btu95min: 1600, Btu95rated: 9100, Btu95max: 10800, Btu17rated: 7000, Btu17max: 11000, Btu5max: 9100, backgroundColor: backgroundColor0),
+        Machine(name: "KW12HQ25SA SET", price: 686.0, isIDU: true, isODU: true, Btu95min: 3050, Btu95rated: 12000, Btu95max: 14000, Btu17rated: 7000, Btu17max: 10900, Btu5max: 8800, backgroundColor: backgroundColor0),
+        Machine(name: "KW12HQ25SD SET", price: 700.0, isIDU: true, isODU: true, Btu95min: 3050, Btu95rated: 12000, Btu95max: 14000, Btu17rated: 7000, Btu17max: 10900, Btu5max: 8800, backgroundColor: backgroundColor0),
+        Machine(name: "KW18HQ25SD SET", price: 839.0, isIDU: true, isODU: true, Btu95min: 4900, Btu95rated: 18000, Btu95max: 21154, Btu17rated: 10800, Btu17max: 15500, Btu5max: 13100, backgroundColor: backgroundColor0),
+        Machine(name: "KW24HQ25SD SET", price: 1051.0, isIDU: true, isODU: true, Btu95min: 3400, Btu95rated: 22000, Btu95max: 28500, Btu17rated: 15000, Btu17max: 22000, Btu5max: 16100, backgroundColor: backgroundColor0),
+        Machine(name: "KW36HQ20SD SET", price: 1475.0, isIDU: true, isODU: true, Btu95min: 8000, Btu95rated: 33600, Btu95max: 37000, Btu17rated: 22000, Btu17max: 28000, Btu5max: 24000, backgroundColor: backgroundColor0),
+        Machine(name: "KM18H5O", price: 727.0, isIDU: false, isODU: true, Btu95min: 7000, Btu95rated: 17000, Btu95max: 19600, Btu17rated: 14700, Btu17max: 16400 , Btu5max: 13600, backgroundColor: backgroundColor1),
+        Machine(name: "KM24H5O", price: 1069.0, isIDU: false, isODU: true, Btu95min: 7500, Btu95rated: 23200, Btu95max: 31400, Btu17rated: 23600, Btu17max: 26600, Btu5max: 21600, backgroundColor: backgroundColor1),
+        Machine(name: "KM30H5O", price: 1248.0, isIDU: false, isODU: true, Btu95min: 8200, Btu95rated: 28400, Btu95max: 34100, Btu17rated: 27200, Btu17max: 31860, Btu5max: 22800, backgroundColor: backgroundColor1),
+        Machine(name: "KM36H5O", price: 1551.0, isIDU: false, isODU: true, Btu95min: 8870, Btu95rated: 34000, Btu95max: 36000, Btu17rated: 30800, Btu17max: 37720, Btu5max: 32400, backgroundColor: backgroundColor1),
+        Machine(name: "KW09HQ25SDI", price: 202.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor0),
+        Machine(name: "KW12HQ25SDI", price: 203.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor0),
+        Machine(name: "KW18HQ25SDI", price: 246.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor0),
+        Machine(name: "KW24HQ25SDI", price: 331.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor0),
+        Machine(name: "KU36UHO/2I", price: 3094.0, isIDU: true, isODU: true, Btu95min: 11000, Btu95rated: 34000, Btu95max: 34000, Btu17rated: 24000, Btu17max: 35000, Btu5max: 28000, backgroundColor: backgroundColor1),
+        Machine(name: "KU60UHO/2I", price: 4074.0, isIDU: true, isODU: true, Btu95min: 15300, Btu95rated: 54000, Btu95max: 54000, Btu17rated: 36000, Btu17max: 49000, Btu5max: 41000, backgroundColor: backgroundColor1)
     ]
     
     @Published var machines19Seer: [Machine] = [
-        Machine(name: "KW09HQ19SA SET", price: 499.0, isIDU: true, isODU: true, Btu95min: 3000, Btu95rated: 9100, Btu95max: 11000, Btu17rated: 6000, Btu17max: 9400, Btu5max: 7500),
-        Machine(name: "KW09HQ19SD SET", price: 499.0, isIDU: true, isODU: true, Btu95min: 2000, Btu95rated: 9100, Btu95max: 10300, Btu17rated: 6000, Btu17max: 9000, Btu5max: 7400),
-        Machine(name: "KW12HQ19SA SET", price: 529.0, isIDU: true, isODU: true, Btu95min: 2400, Btu95rated: 12000, Btu95max: 13300, Btu17rated: 6800, Btu17max: 11500, Btu5max: 8500),
-        Machine(name: "KW12HQ19SD SET", price: 529.0, isIDU: true, isODU: true, Btu95min: 2400, Btu95rated: 12000, Btu95max: 13300, Btu17rated: 6800, Btu17max: 11500, Btu5max: 8500),
-        Machine(name: "KW24HQ17SD SET", price: 918.0, isIDU: true, isODU: true, Btu95min: 6824, Btu95rated: 22000, Btu95max: 25249, Btu17rated: 13900, Btu17max: 18760, Btu5max: 15000),
-        Machine(name: "KW24HQ19SD SET", price: 939.0, isIDU: true, isODU: true, Btu95min: 6824, Btu95rated: 22000, Btu95max: 25249, Btu17rated: 13900, Btu17max: 18760, Btu5max: 15000),
-        Machine(name: "KW07HQ19SDI", price: 135.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW09HQ19SDI", price: 142.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW12HQ19SDI", price: 151.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW18HQ19SDI", price: 240.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0),
-        Machine(name: "KW24HQ19SDI", price: 270.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0)
+        Machine(name: "KW09HQ19SA SET", price: 499.0, isIDU: true, isODU: true, Btu95min: 3000, Btu95rated: 9100, Btu95max: 11000, Btu17rated: 6000, Btu17max: 9400, Btu5max: 7500, backgroundColor: backgroundColor0),
+        Machine(name: "KW09HQ19SD SET", price: 499.0, isIDU: true, isODU: true, Btu95min: 2000, Btu95rated: 9100, Btu95max: 10300, Btu17rated: 6000, Btu17max: 9000, Btu5max: 7400, backgroundColor: backgroundColor0),
+        Machine(name: "KW12HQ19SA SET", price: 529.0, isIDU: true, isODU: true, Btu95min: 2400, Btu95rated: 12000, Btu95max: 13300, Btu17rated: 6800, Btu17max: 11500, Btu5max: 8500, backgroundColor: backgroundColor0),
+        Machine(name: "KW12HQ19SD SET", price: 529.0, isIDU: true, isODU: true, Btu95min: 2400, Btu95rated: 12000, Btu95max: 13300, Btu17rated: 6800, Btu17max: 11500, Btu5max: 8500, backgroundColor: backgroundColor0),
+        Machine(name: "KW18HQ19SD SET", price: 815, isIDU: true, isODU: true, Btu95min: 3400, Btu95rated: 17600, Btu95max: 19960, Btu17rated: 11200, Btu17max: 14400, Btu5max: 11800, backgroundColor: backgroundColor0),
+        Machine(name: "KW24HQ17SD SET", price: 918.0, isIDU: true, isODU: true, Btu95min: 6824, Btu95rated: 22000, Btu95max: 25249, Btu17rated: 13900, Btu17max: 18760, Btu5max: 15000, backgroundColor: backgroundColor0),
+        Machine(name: "KW24HQ19SD SET", price: 939.0, isIDU: true, isODU: true, Btu95min: 6824, Btu95rated: 22000, Btu95max: 25249, Btu17rated: 13900, Btu17max: 18760, Btu5max: 15000, backgroundColor: backgroundColor0),
+        Machine(name: "KW07HQ19SDI", price: 135.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor1),
+        Machine(name: "KW09HQ19SDI", price: 142.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor1),
+        Machine(name: "KW12HQ19SDI", price: 151.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor1),
+        Machine(name: "KW18HQ19SDI", price: 240.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor1),
+        Machine(name: "KW24HQ19SDI", price: 270.0, isIDU: true, isODU: false, Btu95min: 0, Btu95rated: 0, Btu95max: 0, Btu17rated: 0, Btu17max: 0, Btu5max: 0, backgroundColor: backgroundColor1)
     ]
     
     @Published var selectedMachines: [SelectedMachine] = []
+    @AppStorage("showRebateAndFinalBalance") var showRebateAndFinalBalance: Bool = false
     
     var selectedSeer: String {
         get {
@@ -110,11 +117,41 @@ class MachineViewModel: ObservableObject {
     var markupPercentage: Double {
         get {
             let percentage = UserDefaults.standard.double(forKey: "markupPercentage")
-            return percentage == 0 ? 1.5 : percentage
+            return percentage == 0 ? 1.4 : percentage
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "markupPercentage")
             objectWillChange.send()
+        }
+    }
+    
+    var plumberFee: Double {
+        get {
+            let fee = UserDefaults.standard.double(forKey: "plumberFee")
+            return fee == -1 ? 800 : fee
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "plumberFee")
+        }
+    }
+    
+    var subpanelFee: Double {
+        get {
+            let fee = UserDefaults.standard.double(forKey: "subpanelFee")
+            return fee == -1 ? 0 : fee
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "subpanelFee")
+        }
+    }
+    
+    var rebate: Double {
+        get {
+            let fee = UserDefaults.standard.double(forKey: "rebate")
+            return fee == -1 ? 8000 : fee
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "rebate")
         }
     }
 
@@ -133,11 +170,19 @@ class MachineViewModel: ObservableObject {
     var laborCost: Double {
         selectedMachines.reduce(0) { total, selectedMachine in
             return total + (selectedMachine.machine.isIDU ? installationFee * Double(selectedMachine.quantity) * markupPercentage : 0)
-        }
+        }  + plumberFee + subpanelFee
     }
 
     var totalCost: Double {
         equipmentCost + laborCost
+    }
+    
+    var rebateDeduct: Double {
+        totalCost == 0 ? 0 : -rebate
+    }
+    
+    var finalBalance: Double {
+        max(0, totalCost + rebateDeduct)
     }
 
     var Btu95min: Int {
@@ -218,8 +263,9 @@ struct FirstTabView: View {
                             set: { quantities[machine] = $0 }
                         ))
                     }
-                    .padding(.vertical, 6)
+                    .padding(.vertical, 5)
                     .frame(maxWidth: .infinity)
+                    .listRowBackground(machine.backgroundColor)
                 }
                 .listStyle(PlainListStyle())
                 
@@ -375,13 +421,55 @@ struct SecondTabView: View {
                 
                 HStack {
                     Spacer()
-                    Text("Total Cost:")
+                    Text("Subtotal:")
                         .frame(maxWidth: .infinity, alignment: .trailing)
                     Spacer()
                     Text("$\(viewModel.totalCost, specifier: "%.2f")")
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding()
+                
+                if viewModel.showRebateAndFinalBalance {
+                    HStack {
+                        Spacer()
+                        Text("Rebate:")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Spacer()
+                        Text("$\(viewModel.rebateDeduct, specifier: "%.2f")")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding()
+
+                    HStack {
+                        Spacer()
+                        Text("Final Balance:")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Spacer()
+                        Text("$\(viewModel.finalBalance, specifier: "%.2f")")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding()
+                }
+                
+//                HStack {
+//                    Spacer()
+//                    Text("Rebate:")
+//                        .frame(maxWidth: .infinity, alignment: .trailing)
+//                    Spacer()
+//                    Text("$\(viewModel.rebateDeduct, specifier: "%.2f")")
+//                        .frame(maxWidth: .infinity, alignment: .trailing)
+//                }
+//                .padding()
+//                
+//                HStack {
+//                    Spacer()
+//                    Text("Final Balance:")
+//                        .frame(maxWidth: .infinity, alignment: .trailing)
+//                    Spacer()
+//                    Text("$\(viewModel.finalBalance, specifier: "%.2f")")
+//                        .frame(maxWidth: .infinity, alignment: .trailing)
+//                }
+//                .padding()
             }
             .navigationTitle("Estimate")
             .navigationBarItems(trailing: Button(action: {
@@ -434,17 +522,31 @@ struct ThirdTabView: View {
                 
                 HStack {
                     Spacer()
-                    Text("BH/SF:")
+                    Text("(Residential)BHL/SF:")
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                     Spacer()
-                    Text("\(Double(viewModel.Btu17rated)/viewModel.SF, specifier: "%.2f")")
+                    Text("\(Double(viewModel.Btu17max)/viewModel.SF, specifier: "%.2f")")
                         .frame(maxWidth: .infinity, alignment: .trailing)
-                        .foregroundColor(.black)
                 }
                 .padding()
                 .frame(maxHeight: 40)
-                .background(Color(red: 0.88, green: 1.0, blue: 0.88))
+                .background(Color(UIColor.secondarySystemBackground))
+//                .listRowBackground(Color(.secondarySystemBackground))
+                
+                HStack {
+                    Spacer()
+                    Text("(Commercial)BH/SF:")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+//                        .foregroundColor(.black)
+                    Spacer()
+                    Text("\(Double(viewModel.Btu17rated)/viewModel.SF, specifier: "%.2f")")
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                .padding()
+                .frame(maxHeight: 40)
+//                .listRowBackground(Color(UIColor.secondarySystemBackground))
+                .background(Color(UIColor.secondarySystemBackground))
 //                .background(Color(red: 0.6, green: 1.0, blue: 0.6))
                 
                 HStack {
@@ -501,6 +603,7 @@ struct ThirdTabView: View {
                 }
                 .padding()
                 .frame(maxHeight: 40)
+                .background(Color(UIColor.secondarySystemBackground))
                 
                 HStack {
                     Spacer()
@@ -538,13 +641,22 @@ struct SettingsView: View {
     @State private var tempInstallationFee: Double
     @State private var tempEquipmentMarkupPercentage: Double
     @State private var tempMarkupPercentage: Double
-    @State private var showInfoPopup: Bool = false
+    @State private var tempPlumberFee: Double
+    @State private var tempSubpanelFee: Double
+    @State private var tempRebateAmount: Double
+
+    let plumberFeeValues = [0.0, 800.0, 1600.0, 2400.0, 3200.0]
+    let subpanelFeeValues = [0.0, 300.0, 600.0, 900.0, 1200.0, 1500.0, 1800.0]
+    let rebateValues = [0.0, 4000.0, 5000.0, 7500.0, 8000.0, 10000.0, 12000.0, 12500.0, 15000.0, 16000.0]
 
     init(viewModel: MachineViewModel) {
         self.viewModel = viewModel
         _tempInstallationFee = State(initialValue: viewModel.installationFee)
         _tempEquipmentMarkupPercentage = State(initialValue: viewModel.equipmentMarkupPercentage)
         _tempMarkupPercentage = State(initialValue: viewModel.markupPercentage)
+        _tempPlumberFee = State(initialValue: viewModel.plumberFee)
+        _tempSubpanelFee = State(initialValue: viewModel.subpanelFee)
+        _tempRebateAmount = State(initialValue: viewModel.rebate)
     }
 
     var body: some View {
@@ -559,7 +671,7 @@ struct SettingsView: View {
                             .keyboardType(.decimalPad)
                             .frame(width: 100)
                     }
-                    
+
                     HStack {
                         Text("Markup Percentage:")
                         Spacer()
@@ -568,7 +680,7 @@ struct SettingsView: View {
                             .keyboardType(.decimalPad)
                             .frame(width: 100)
                     }
-                    
+
                     HStack {
                         Text("Total Markup Percentage:")
                         Spacer()
@@ -578,60 +690,57 @@ struct SettingsView: View {
                             .frame(width: 100)
                     }
                 }
-                
-                Section(header: Text("Usefull links")) {
-                    HStack {
-                        Link("Eligibility Check", destination: URL(string: "https://conedeligibility.com/Identity/Account/Login?ReturnUrl=%2FEligibility%2FCheck")!)
-                            .foregroundColor(.blue)
-    //                        .underline()
-                    }
-                    HStack {
-                        Link("DAC Check", destination: URL(string: "https://conedeligibility.com/Identity/Account/Login?ReturnUrl=%2FEligibility%2FCheck")!)
-                            .foregroundColor(.blue)
-        //                        .underline()
-                    }
 
-//                    Link("Eligibility Check", destination: URL(string: "https://conedeligibility.com/Identity/Account/Login?ReturnUrl=%2FEligibility%2FCheck")!)
-//                        .foregroundColor(.blue)
-////                        .underline()
+                Section(header: HStack {
+                    Text("Additional Fees")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Button("Default") {
+                        tempPlumberFee = 800.0
+                        tempSubpanelFee = 0.0
+                        tempRebateAmount = 8000.0
+                    }
+                    .padding(.trailing, 8)
+
+                    Button("Clear") {
+                        tempPlumberFee = 0
+                        tempSubpanelFee = 0
+                        tempRebateAmount = 0
+                    }
+                    .foregroundColor(.red)
+                    
+                }) {
+                    HStack {
+                        Text("Plumber Fee:")
+                        Spacer()
+                        AdjustableTextField(value: $tempPlumberFee, valueList: plumberFeeValues)
+                    }
+                    HStack {
+                        Text("Subpanel Fee:")
+                        Spacer()
+                        AdjustableTextField(value: $tempSubpanelFee, valueList: subpanelFeeValues)
+                    }
+                    HStack {
+                        Text("Rebate Amount:")
+                        Spacer()
+                        AdjustableTextField(value: $tempRebateAmount, valueList: rebateValues)
+                    }
+                    Toggle("Show Rebate & Final Balance", isOn: $viewModel.showRebateAndFinalBalance)
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                
-//                Section(header: Text("Disadvantaged Community (DAC) Check")) {
-//                    HStack {
-//                        Text("Enter Zip Code:")
-//                        Spacer()
-//                        TextField("Zip Code", text: $tempZipCode)
-//                            .textFieldStyle(RoundedBorderTextFieldStyle())
-//                            .keyboardType(.numberPad)
-//                            .frame(width: 100)
-//                            .onChange(of: tempZipCode) { newValue in
-//                                viewModel.zipCode = newValue
-//                                viewModel.checkDAC()  // Check DAC status in real-time
-//                            }
-//                        
-//                        if !tempZipCode.isEmpty {
-//                            if viewModel.isDAC {
-//                                Image(systemName: "checkmark.circle.fill")
-//                                    .foregroundColor(.green)
-//                            } else {
-//                                Image(systemName: "questionmark.circle.fill")
-//                                    .foregroundColor(.orange)
-//                                    .onTapGesture {
-//                                        withAnimation(.easeInOut) {
-//                                            showInfoPopup = true  // Show alert-like dialog with animation
-//                                        }
-//                                    }
-//                            }
-//                        }
-//                    }
-//                    
-//                }
-                
+
                 Section {
                     Button(action: {
+                        // Save all values to the view model and UserDefaults
                         viewModel.installationFee = tempInstallationFee
                         viewModel.equipmentMarkupPercentage = tempEquipmentMarkupPercentage
                         viewModel.markupPercentage = tempMarkupPercentage
+
+                        viewModel.plumberFee = tempPlumberFee
+                        viewModel.subpanelFee = tempSubpanelFee
+                        viewModel.rebate = tempRebateAmount
+
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("Confirm")
@@ -644,23 +753,54 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
-//            .sheet(isPresented: $showInfoPopup) {
-//                DACInfoView()
-//            }
         }
-//        if showInfoPopup {
-////            Color.black.opacity(0.4)
-////                .edgesIgnoringSafeArea(.all)
-////                .onTapGesture {
-////                    withAnimation(.easeInOut) {
-////                        showInfoPopup = false  // Dismiss the alert when tapping outside
-////                    }
-////                }
-//
-//            DACInfoView(showInfoPopup: $showInfoPopup)
-//                .transition(.scale(scale: 1.1).combined(with: .opacity))  // Add scale and opacity transition
-//                .zIndex(1)
-//        }
+    }
+}
+
+struct AdjustableTextField: View {
+    @Binding var value: Double
+    var valueList: [Double]
+
+    var body: some View {
+        HStack {
+            Button(action: {
+                adjustValue(by: -1)
+            }) {
+                Image(systemName: "minus")
+                    .frame(width: 24, height: 24)
+                    .background(Circle().fill(Color.red))
+                    .foregroundColor(.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+
+            TextField("Amount", value: $value, format: .number)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .keyboardType(.decimalPad)
+                .multilineTextAlignment(.center)
+                .frame(width: 100)
+
+            Button(action: {
+                adjustValue(by: 1)
+            }) {
+                Image(systemName: "plus")
+                    .frame(width: 24, height: 24)
+                    .background(Circle().fill(Color.green))
+                    .foregroundColor(.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+    }
+
+    private func adjustValue(by step: Int) {
+        if value < 0 {
+            // Start from the first value in the list when value is 0
+            value = valueList.first ?? 0
+        } else if let index = valueList.firstIndex(where: { $0 >= value }) {
+            let newIndex = max(0, min(valueList.count - 1, index + step))
+            value = valueList[newIndex]
+        } else {
+            value = valueList.first ?? 0
+        }
     }
 }
 

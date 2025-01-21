@@ -117,6 +117,7 @@
 			mainGroup = 18DEEC8E2C6282E900179E86;
 			packageReferences = (
 				184C238B2C62A177009A0573 /* XCRemoteSwiftPackageReference "CoreXLSX" */,
+				6FD6DEE72D40372000CDD438 /* XCRemoteSwiftPackageReference "amplify-swift" */,
 			);
 			productRefGroup = 18DEEC982C6282E900179E86 /* Products */;
 			projectDirPath = "";
@@ -277,7 +278,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Quote Tool/Quote_Tool.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Quote Tool/Preview Content\"";
 				DEVELOPMENT_TEAM = H87P4PBPXZ;
@@ -321,7 +322,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Quote Tool/Quote_Tool.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Quote Tool/Preview Content\"";
 				DEVELOPMENT_TEAM = H87P4PBPXZ;
@@ -385,6 +386,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.14.2;
+			};
+		};
+		6FD6DEE72D40372000CDD438 /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.45.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
